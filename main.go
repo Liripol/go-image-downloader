@@ -42,7 +42,6 @@ func main() {
 	var wg sync.WaitGroup
 	tasks := make(chan string)
 
-	// Запускаем воркеров
 	for i := 0; i < numWorkers; i++ {
 		wg.Add(1)
 		go func(workerId int) {
@@ -60,7 +59,6 @@ func main() {
 		}(i)
 	}
 
-	// Отправляем задачи
 	for _, url := range urls {
 		tasks <- url
 	}
